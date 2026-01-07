@@ -74,7 +74,7 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[node name="InventorySlot" type="Button" node_paths=PackedStringArray("icon_slot")]
+[node name="InventorySlot" type="Button"]
 custom_minimum_size = Vector2(66, 66)
 offset_right = 8.0
 offset_bottom = 8.0
@@ -84,9 +84,9 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_refl1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nsnbm")
 theme_override_styles/focus = SubResource("StyleBoxFlat_22dgf")
 script = ExtResource("1_refl1")
-icon_slot = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_left = 1.0

@@ -74,7 +74,7 @@ var current_lean: float = 0.0
 # Inventory Vars
 @onready var inventory_controller: InventoryController = %InventoryController/CanvasLayer/InventoryUI
 @onready var interaction_raycast: RayCast3D = %InteractionRaycast
-
+var inventory_opened_flag: bool = false
 
 
 func _ready() -> void:
@@ -90,18 +90,28 @@ func _input(event: InputEvent) -> void:
 	elif Input.is_action_pressed("lean_right"):
 		target_lean = 1.0
 	else:
-		target_lean = 0.0	
+		target_lean = 0.0
 		
-		
-	if Input.is_action_pressed("inventory"):
-		inventory_controller.visible = true
+	if Input.is_action_just_pressed("inventory"):
+		# If the player was interacting with something, end that interaction
+		if interaction_controller.interaction_component != null:
+			interaction_controller.interaction_component.post_interact()
+		# If the inventory is open show the cursor, inventory panel, and block all other interaction
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		inventory_controller.visible = true
 		interaction_raycast.enabled = false
-	else:
+		inventory_opened_flag = true
+	elif Input.is_action_pressed("inventory"):
+		return # no-op
+	elif Input.is_action_just_released("inventory"):
+		# If the inventory is closed
 		inventory_controller.visible = false
 		interaction_raycast.enabled = true
 		if not interaction_controller.current_object:
+			# Special check for interactable objects that still show the mouse (wheels)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		# Camera movement via mouse
 		if event is InputEventMouseMotion:
 			if current_sensitivity > 0.01 and not interaction_controller.isCameraLocked():
 				mouse_input = event.relative
@@ -144,6 +154,16 @@ func _physics_process(delta: float) -> void:
 	note_tilt_and_sway(delta)
 
 func _process(delta: float) -> void:
+	# TODO: Kludge fix for context menu being open and letting go of inventory button
+	if inventory_opened_flag and !Input.is_action_pressed("inventory"):
+		# If the inventory is closed
+		inventory_controller.visible = false
+		inventory_controller.context_menu.visible = false
+		interaction_raycast.enabled = true
+		if not interaction_controller.current_object:
+			# Special check for interactable objects that still show the mouse (wheels)
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	# If we just unlocked camera, slowly bring sensitivity back to normal levels
 	if sensitivity_fading_in:
 		current_sensitivity = lerp(current_sensitivity, normal_sensitivity, delta * sensitivity_restore_speed)

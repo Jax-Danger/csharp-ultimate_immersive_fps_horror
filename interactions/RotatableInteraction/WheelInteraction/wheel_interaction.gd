@@ -89,8 +89,7 @@ func _process(delta: float) -> void:
 		var max_wheel_rotation = maximum_rotation / 0.1
 		current_angle = clamp(current_angle, min_wheel_rotation, max_wheel_rotation)
 		angular_velocity = current_angle - previous_angle
-		print(angular_velocity)
-		
+
 		object_ref.rotation.z = current_angle * 0.1
 		var percentage: float = get_rotation_percentage()
 		notify_nodes(percentage)

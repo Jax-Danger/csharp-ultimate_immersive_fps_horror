@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://crd8v7n43w1nk" path="res://inventory/actions/equippable_action.gd" id="2_0e8it"]
 [ext_resource type="AudioStream" uid="uid://dkfquhn7txsbi" path="res://assets/sound_effects/handleCoins2.ogg" id="2_shf6t"]
 [ext_resource type="Script" uid="uid://bwybjlc36d0qn" path="res://inventory/item_data.gd" id="4_7bgb1"]
+[ext_resource type="Texture2D" uid="uid://b43gj1rw28wgg" path="res://interactions/CollectableInteraction/EquippableInteraction/Interactables/key.png" id="4_hwui0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvkye"]
 resource_name = "Golden"
@@ -53,14 +54,13 @@ size = Vector3(0.44458008, 0.113342285, 1.0334473)
 
 [sub_resource type="Resource" id="Resource_hwui0"]
 script = ExtResource("2_0e8it")
+success_text = "Door Unlocked"
 metadata/_custom_type_script = "uid://crd8v7n43w1nk"
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7bgb1"]
 
 [sub_resource type="Resource" id="Resource_d0y2h"]
 script = ExtResource("4_7bgb1")
 item_name = "special_key"
-item_icon = SubResource("PlaceholderTexture2D_7bgb1")
+item_icon = ExtResource("4_hwui0")
 action_data = SubResource("Resource_hwui0")
 metadata/_custom_type_script = "uid://bwybjlc36d0qn"
 

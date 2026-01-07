@@ -27,14 +27,12 @@ signal note_inspected(note: Node3D)
 func _ready() -> void:
 	super()
 	# Initialize Audio
-	collect_audio_player = AudioStreamPlayer3D.new()
 	collect_sound_effect = load("res://assets/sound_effects/drawKnife2.ogg")
-	# TODO: Make this spawn where the item is being picked up from
-	collect_audio_player.stream = collect_sound_effect
-	add_child(collect_audio_player)
 
 	# Replace newline characters to ensure formatting displays as expected
 	content = content.replace("\\n", "\n")
+	
+	_collect_mesh_and_collision_nodes()
 
 ## Runs once, when the player FIRST clicks on an object to interact with
 func pre_interact() -> void:
@@ -43,22 +41,14 @@ func pre_interact() -> void:
 ## Run every frame while the player is interacting with this object
 func interact() -> void:
 	super()
-		
+	
 	if not can_interact:
 		return
 		
-	# Change the mesh to render on layer 2; this prevents it from clipping with walls
-	var mesh = get_parent().find_child("MeshInstance3D", true, false)
-	if mesh:
-		mesh.layers = 2
+	note_inspected.emit(get_parent())
 	
-	# Remove collision from the note so it doesnt interfere with player movement
-	var col = get_parent().find_child("CollisionShape3D", true, false)
-	if col:
-		col.get_parent().remove_child(col)
-		col.queue_free()
-	_play_collect_sound_effect()
-	emit_signal("note_inspected", get_parent())
+	# The note is now in the player hand and should NOT be interacted with
+	can_interact = false
 	
 ## Alternate interaction using secondary button
 func aux_interact() -> void:

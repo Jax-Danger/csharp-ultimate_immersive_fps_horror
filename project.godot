@@ -15,6 +15,10 @@ run/main_scene="uid://8n8svovtgrsr"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"

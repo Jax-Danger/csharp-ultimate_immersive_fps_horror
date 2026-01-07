@@ -245,11 +245,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.456
 
 [node name="DoorInteraction" parent="Door2/PivotPoint/Door" index="4"]
 unlock_key_name = "super_key"
+is_locked = false
 movement_sound = ExtResource("15_ubtly")
 maximum_rotation = -150.0
 
 [node name="Key2" parent="." instance=ExtResource("22_hto2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3926506, 2.024353, -1.8840449)
+
+[node name="Cube_1kg2" parent="." instance=ExtResource("10_h8jws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25359, 1.5, 4.21872)
 
 [editable path="Podium_Switch/Switch"]
 [editable path="Podium_Wheel/Wheel/Wheel"]
@@ -276,3 +280,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3926506, 2.024353, -1.88404
 [editable path="Item16"]
 [editable path="Door2"]
 [editable path="Key2"]
+[editable path="Cube_1kg2"]

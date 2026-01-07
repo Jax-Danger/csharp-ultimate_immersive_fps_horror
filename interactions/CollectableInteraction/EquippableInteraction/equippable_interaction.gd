@@ -20,11 +20,9 @@ signal item_collected(item: Node)
 func _ready() -> void:
 	super()
 	# Initialize Audio
-	collect_audio_player = AudioStreamPlayer3D.new()
 	collect_sound_effect = load("res://assets/sound_effects/handleCoins2.ogg")
-	# TODO: Make this spawn where the item is being picked up from
-	collect_audio_player.stream = collect_sound_effect
-	add_child(collect_audio_player)
+	
+	_collect_mesh_and_collision_nodes()
 
 ## Runs once, when the player FIRST clicks on an object to interact with
 func pre_interact() -> void:
@@ -37,8 +35,10 @@ func interact() -> void:
 	if not can_interact:
 		return
 	
-	emit_signal("item_collected", get_parent())
-	_play_collect_sound_effect()
+	item_collected.emit(get_parent())
+	
+	# The item is now in the player hand and should NOT be interacted with
+	can_interact = false
 	
 ## Alternate interaction using secondary button
 func aux_interact() -> void:

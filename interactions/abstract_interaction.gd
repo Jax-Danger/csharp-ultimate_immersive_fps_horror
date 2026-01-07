@@ -53,5 +53,6 @@ func notify_nodes(percentage: float) -> void:
 		if node and node.has_method("execute"):
 			node.call("execute", percentage)
 			
+## True if the item is successfully used, false otherwise. Child classes should implement logic
 func use_item(_item_data: ItemData) -> bool:
 	return false
