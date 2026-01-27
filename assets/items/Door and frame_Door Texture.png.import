@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr2netvm7tfaj"
-path.s3tc="res://.godot/imported/texture_09.png-b07375666a5c185d356564eb536a79c5.s3tc.ctex"
+uid="uid://cdxhst6pmf6m5"
+path.s3tc="res://.godot/imported/Door and frame_Door Texture.png-202519564d4f51d215e09c9a66268930.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "0865eccb0628aad105eeabde16af553f"
+}
 
 [deps]
 
-source_file="res://assets/kenney_protoype_textures/PNG/Light/texture_09.png"
-dest_files=["res://.godot/imported/texture_09.png-b07375666a5c185d356564eb536a79c5.s3tc.ctex"]
+source_file="res://assets/items/Door and frame_Door Texture.png"
+dest_files=["res://.godot/imported/Door and frame_Door Texture.png-202519564d4f51d215e09c9a66268930.s3tc.ctex"]
 
 [params]
 

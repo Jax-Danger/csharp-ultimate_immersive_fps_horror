@@ -14,7 +14,7 @@ to define how the inventory should handle it when collected.
 """
 
 ## Sound effect to play when the player collects this item
-@export var collect_sound_effect: AudioStreamOggVorbis
+@export var collect_sound_effect: AudioStreamOggVorbis = load("res://assets/sound_effects/handleCoins2.ogg")
 
 ## Define the ItemData for when this item enters the player inventory
 @export var item_data: ItemData

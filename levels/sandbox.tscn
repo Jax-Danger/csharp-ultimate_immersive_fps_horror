@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://8n8svovtgrsr"]
+[gd_scene load_steps=34 format=3 uid="uid://8n8svovtgrsr"]
 
 [ext_resource type="Texture2D" uid="uid://o2n1nqo1yahd" path="res://assets/kenney_protoype_textures/PNG/Dark/texture_13.png" id="1_whpuv"]
 [ext_resource type="Texture2D" uid="uid://dv8x0y75pmtma" path="res://assets/kenney_protoype_textures/PNG/Light/texture_13.png" id="2_85hcc"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cs7dsiexgq6ls" path="res://interactions/TypeableInteraction/Interactables/keypad.tscn" id="21_yn25f"]
 [ext_resource type="PackedScene" uid="uid://c8t8rfvwj7ssd" path="res://interactions/CollectableInteraction/EquippableInteraction/Interactables/key2.tscn" id="22_hto2u"]
 [ext_resource type="PackedScene" uid="uid://nv6su48cqvpq" path="res://interactions/GrabbableInteraction/Interactables/cube_5_kg.tscn" id="23_2gvps"]
+[ext_resource type="PackedScene" uid="uid://d4ejldqlg3sdc" path="res://interactions/CollectableInteraction/EquippableInteraction/Interactables/health_pack.tscn" id="23_sv1wq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0b4d"]
 sky_top_color = Color(0.280211, 0.337572, 0.417356, 1)
@@ -54,13 +55,22 @@ uv1_triplanar = true
 albedo_texture = ExtResource("1_whpuv")
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gvps"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbxwc"]
+size = Vector3(0.1, 0.75, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bd5kx"]
+size = Vector3(0.1, 0.75, 0.1)
+
 [node name="Sandbox" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yn25f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.6361847, -0.66817224, 0.3857679, 7.993978e-09, 0.49999836, 0.86602634, -0.7715371, 0.5509512, -0.31809035, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
@@ -100,7 +110,7 @@ transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-0
 transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, -0.25, 0, 0.25, -1.09278e-08, 3, 0, 0.526254)
 
 [node name="Player" parent="." instance=ExtResource("3_85hcc")]
-transform = Transform3D(0.07302896, 0, -0.99733, 0, 1, 0, 0.99733, 0, 0.07302896, -2.391955, 1, -0.4129219)
+transform = Transform3D(-0.9994422, 0, 0.0333997, 0, 1, 0, -0.0333997, 0, -0.9994422, -2.9441204, 1, -1.4736195)
 
 [node name="Podium_Switch" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 4, 2, 6)
@@ -170,9 +180,10 @@ layers = 1048575
 script = ExtResource("9_50mym")
 
 [node name="Keypad" parent="." instance=ExtResource("21_yn25f")]
-transform = Transform3D(0.25, 0, -2.66454e-15, 0, 0.25, 0, 2.66454e-15, 0, 0.25, -1.19836, 2.52017, 3.94805)
+transform = Transform3D(-1.092785e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.092785e-08, -17.62371, 2.487092, 0.3989128)
 
 [node name="TypeableInteraction" parent="Keypad" index="14" node_paths=PackedStringArray("nodes_to_affect")]
+correct_code = Array[int]([0, 4, 5, 1, 0])
 nodes_to_affect = [NodePath("../../Door/PivotPoint/Door/DoorInteraction")]
 
 [node name="Cube_5kg" parent="." instance=ExtResource("23_2gvps")]
@@ -255,6 +266,112 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3926506, 2.024353, -1.88404
 [node name="Cube_1kg2" parent="." instance=ExtResource("10_h8jws")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25359, 1.5, 4.21872)
 
+[node name="HealthPack" parent="." instance=ExtResource("23_sv1wq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.844999, 2.3960414, -5.86145)
+
+[node name="GreenScreen" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="GreenScreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5, -3.5)
+use_collision = true
+size = Vector3(7, 1, 26)
+material = SubResource("StandardMaterial3D_2gvps")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="GreenScreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 7.960083, -5.3771973)
+use_collision = true
+size = Vector3(1, 15.920166, 29.754395)
+material = SubResource("StandardMaterial3D_2gvps")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="GreenScreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2.7534971, 0.5)
+use_collision = true
+size = Vector3(3, 1.5668945, 6)
+material = SubResource("StandardMaterial3D_2gvps")
+
+[node name="Podium_Switch2" type="CSGBox3D" parent="."]
+transform = Transform3D(1.3113461e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113461e-07, 4, 2, 9)
+use_collision = true
+size = Vector3(1, 2, 1)
+material = SubResource("StandardMaterial3D_jpsdj")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Podium_Switch2"]
+transform = Transform3D(1, 1.74846e-07, 1.74846e-07, -1.74846e-07, -4.37114e-08, 1, 1.74846e-07, -1, -4.37114e-08, 0, 2, 0)
+script = ExtResource("9_50mym")
+
+[node name="Switch" parent="Podium_Switch2" instance=ExtResource("7_ubtly")]
+transform = Transform3D(0.866025, -0.5, -2.34249e-08, 0.5, 0.866025, 8.7423e-08, -2.34249e-08, -8.7423e-08, 1, -0.489976, 0.451452, 0)
+
+[node name="MeshInstance3D" parent="Podium_Switch2/Switch/Switch" index="0"]
+mesh = SubResource("BoxMesh_rbxwc")
+
+[node name="CollisionShape3D" parent="Podium_Switch2/Switch/Switch" index="1"]
+shape = SubResource("BoxShape3D_bd5kx")
+
+[node name="SwitchInteraction" parent="Podium_Switch2/Switch/Switch" index="2" node_paths=PackedStringArray("nodes_to_affect")]
+movement_sound = ExtResource("8_yn25f")
+nodes_to_affect = [NodePath("../../../SpotLight3D")]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.153858, 1.396041, 2.3422089)
+
+[node name="HealthPack2" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4502058, 0, 1.3387532)
+
+[node name="HealthPack3" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8706951, 4.7683716e-07, 3.7859793)
+
+[node name="HealthPack4" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19222927, 4.7683716e-07, 3.221149)
+
+[node name="HealthPack5" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.053751945, 4.7683716e-07, 1.4661474)
+
+[node name="HealthPack6" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5555134, 4.7683716e-07, 2.3986292)
+
+[node name="HealthPack7" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18022823, 4.7683716e-07, 4.247725)
+
+[node name="HealthPack8" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4502058, 0, 0.27387953)
+
+[node name="HealthPack9" parent="Node3D" instance=ExtResource("23_sv1wq")]
+
+[node name="HealthPack10" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5663252, 1.396041, 1.7846055)
+
+[node name="HealthPack11" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06841278, 1.396041, 1.7846055)
+
+[node name="HealthPack12" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5663252, 1.396041, 3.054501)
+
+[node name="HealthPack13" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78177834, 1.396041, -0.0039134026)
+
+[node name="HealthPack14" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26855564, 1.396041, 3.1720147)
+
+[node name="HealthPack15" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85564613, 1.396041, 0.47357965)
+
+[node name="HealthPack16" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3208714, 1.396041, 0.5544119)
+
+[node name="HealthPack17" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4502058, 0, 1.3387532)
+
+[node name="HealthPack18" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4502058, 0, 1.3387532)
+
+[node name="HealthPack19" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4502058, 0, 1.3387532)
+
+[node name="HealthPack20" parent="Node3D" instance=ExtResource("23_sv1wq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4502058, 0, 1.3387532)
+
 [editable path="Podium_Switch/Switch"]
 [editable path="Podium_Wheel/Wheel/Wheel"]
 [editable path="Cube_1kg"]
@@ -281,3 +398,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25359, 1.5, 4.21872)
 [editable path="Door2"]
 [editable path="Key2"]
 [editable path="Cube_1kg2"]
+[editable path="Podium_Switch2/Switch"]

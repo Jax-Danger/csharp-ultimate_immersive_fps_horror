@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr2netvm7tfaj"
-path.s3tc="res://.godot/imported/texture_09.png-b07375666a5c185d356564eb536a79c5.s3tc.ctex"
+uid="uid://bvt0fnmpbqfnh"
+path.s3tc="res://.godot/imported/Pickup Health_Atlas.png-f2d31e60b81f8d768cde455deaf4e110.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "b6b1d5843eb67973aacf764f46d2f25b"
+}
 
 [deps]
 
-source_file="res://assets/kenney_protoype_textures/PNG/Light/texture_09.png"
-dest_files=["res://.godot/imported/texture_09.png-b07375666a5c185d356564eb536a79c5.s3tc.ctex"]
+source_file="res://assets/items/Pickup Health_Atlas.png"
+dest_files=["res://.godot/imported/Pickup Health_Atlas.png-f2d31e60b81f8d768cde455deaf4e110.s3tc.ctex"]
 
 [params]
 

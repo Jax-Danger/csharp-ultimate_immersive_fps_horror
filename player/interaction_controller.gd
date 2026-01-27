@@ -176,6 +176,7 @@ func on_note_inspected(note: Node3D):
 	current_note = note
 	# Cache the interaction component for this note
 	note_interaction_component = find_interaction_component(current_note) as InspectableInteraction
+	_play_sound_effect(note_interaction_component.collect_sound_effect)
 	# Reparent Note to the player hand
 	if current_note.get_parent() != null:
 		current_note.get_parent().remove_child(current_note)

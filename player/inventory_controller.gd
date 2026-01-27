@@ -227,23 +227,23 @@ func drop_collectable(slot_id: int) -> void:
 	
 	## DebugDraw3D is a debugging tool to show the vector checks made above.
 	# Visualize forward ray (obstacle check)
-	DebugDraw3D.draw_line(
-		player_camera.global_transform.origin,
-		target_pos,
-		Color.RED,
-		1.5
-	)
-
-	# Visualize downward ray (ground check)
-	DebugDraw3D.draw_line(
-		target_pos + Vector3.UP * 2.0,
-		target_pos - Vector3.UP * 5.0,
-		Color.GREEN,
-		1.5
-	)
+	#DebugDraw3D.draw_line(
+		#player_camera.global_transform.origin,
+		#target_pos,
+		#Color.RED,
+		#1.5
+	#)
+#
+	## Visualize downward ray (ground check)
+	#DebugDraw3D.draw_line(
+		#target_pos + Vector3.UP * 2.0,
+		#target_pos - Vector3.UP * 5.0,
+		#Color.GREEN,
+		#1.5
+	#)
 	
 	# Add some height to the object when it is dropped so there is movement to it
-	var buffer_height: float = 0.2
+	var buffer_height: float = 0.7
 	
 	# Place instance into the world physically
 	if instance is RigidBody3D:
@@ -251,6 +251,8 @@ func drop_collectable(slot_id: int) -> void:
 		instance.global_transform.origin = ground_pos + Vector3.UP * buffer_height
 		instance.freeze = false
 		instance.gravity_scale = 1.0
+		instance.rotation_degrees.x = randf() * 360
+		instance.rotation_degrees.z = randf() * 360
 	else:
 		# If the object is a static body, it cant move or roll. Simply place it on the ground, with a small height
 		# increase to ensure there is no z-clipping with the floor

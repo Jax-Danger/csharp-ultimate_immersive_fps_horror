@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://luy7w0qfph84"]
+[gd_scene load_steps=19 format=3 uid="uid://luy7w0qfph84"]
 
 [ext_resource type="Script" uid="uid://chmo46pkxaexp" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://dgh3ul6rjlkgi" path="res://assets/reticles/white_reticle.png" id="2_g1dw6"]
@@ -14,8 +14,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oul6g"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ebec5"]
 height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ieo8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qjkh3"]
 radius = 6.0
@@ -45,9 +47,12 @@ shape = SubResource("CapsuleShape3D_kqu6x")
 
 [node name="CrouchingCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_oul6g")
+shape = SubResource("CapsuleShape3D_ebec5")
 
-[node name="StandupCheck" type="RayCast3D" parent="."]
+[node name="StandupCheck" type="ShapeCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+shape = SubResource("CapsuleShape3D_2ieo8")
 target_position = Vector3(0, 2, 0)
 
 [node name="InteractableCheck" type="Area3D" parent="."]
@@ -225,37 +230,49 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BlackOverlay" type="ColorRect" parent="GUI/NoteLayer/NoteOverlay"]
-material = SubResource("ShaderMaterial_rgyib")
-layout_mode = 0
-offset_left = 960.0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0, 0, 0, 1)
-
-[node name="Control" type="Control" parent="GUI/NoteLayer/NoteOverlay"]
-anchors_preset = 0
-offset_left = 1205.0
-offset_top = 21.0
-offset_right = 1893.0
-offset_bottom = 1062.0
-
-[node name="NoteContent" type="RichTextLabel" parent="GUI/NoteLayer/NoteOverlay/Control"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/NoteLayer/NoteOverlay"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -513.5
-offset_bottom = 517.5
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "test text is typed here
 
+[node name="LeftSide" type="Control" parent="GUI/NoteLayer/NoteOverlay/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-test"
-fit_content = true
+[node name="RightSide" type="Control" parent="GUI/NoteLayer/NoteOverlay/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BlackOverlay" type="ColorRect" parent="GUI/NoteLayer/NoteOverlay/HBoxContainer/RightSide"]
+material = SubResource("ShaderMaterial_rgyib")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NoteContent" type="RichTextLabel" parent="GUI/NoteLayer/NoteOverlay/HBoxContainer/RightSide/BlackOverlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos."
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
