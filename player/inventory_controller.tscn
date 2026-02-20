@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://tascqdeiqxem"]
+[gd_scene format=3 uid="uid://tascqdeiqxem"]
 
-[ext_resource type="Script" uid="uid://ch5762c4lvegj" path="res://player/inventory_controller.gd" id="1_hngwd"]
+[ext_resource type="Script" uid="uid://ch5762c4lvegj" path="res://player/InventoryController.cs" id="1_hngwd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifn1s"]
 content_margin_left = 0.0

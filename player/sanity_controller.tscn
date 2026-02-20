@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0bcshd6w44pb"]
+[gd_scene format=3 uid="uid://c0bcshd6w44pb"]
 
-[ext_resource type="Script" uid="uid://des1jptc7jwy0" path="res://player/sanity_controller.gd" id="1_gcf08"]
+[ext_resource type="Script" uid="uid://des1jptc7jwy0" path="res://player/SanityController.cs" id="1_gcf08"]
 [ext_resource type="Shader" uid="uid://b2n4xrtfumd1b" path="res://shaders/distortion.gdshader" id="2_mmjw3"]
 [ext_resource type="Texture2D" uid="uid://cgsxip30l0fhm" path="res://icon.svg" id="3_a085o"]
 [ext_resource type="Shader" uid="uid://d3iqkkqtp5byv" path="res://shaders/puzzlecomplete.gdshader" id="4_e61y0"]

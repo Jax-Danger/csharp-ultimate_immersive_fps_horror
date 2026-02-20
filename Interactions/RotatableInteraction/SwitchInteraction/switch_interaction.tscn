@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://130sklj6vifa"]
+
+[ext_resource type="Script" path="res://Interactions/RotatableInteraction/SwitchInteraction/SwitchInteraction.cs" id="1_x1r43"]
+
+[node name="SwitchInteraction" type="Node"]
+script = ExtResource("1_x1r43")

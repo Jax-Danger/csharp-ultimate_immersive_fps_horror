@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bwxpevwpcykhn"]
+
+[ext_resource type="Script" uid="uid://bavpymog4xc7r" path="res://scripts/LevelCreator.cs" id="1_1vwtg"]
+[ext_resource type="PackedScene" uid="uid://ckm0h33abqhjs" path="res://Levels/World.tscn" id="1_272bh"]
+[ext_resource type="PackedScene" uid="uid://luy7w0qfph84" path="res://player/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://cq4as87vj85xm" path="res://assets/kenney_protoype_textures/PNG/Dark/texture_07.png" id="2_gnif3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwy2l"]
+albedo_texture = ExtResource("2_gnif3")
+uv1_triplanar = true
+
+[node name="Main" type="Node3D" unique_id=438111911]
+script = ExtResource("1_1vwtg")
+worldScene = ExtResource("1_272bh")
+metadata/_custom_type_script = "uid://bavpymog4xc7r"
+
+[node name="World" type="Node" parent="." unique_id=1152093538 instance=ExtResource("1_272bh")]
+metadata/_scene_level_creator_world = true
+
+[node name="Static" type="Node3D" parent="." unique_id=1289385671]
+metadata/_scene_level_creator_generated = true
+
+[node name="Floor" type="CSGBox3D" parent="Static" unique_id=881834629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4636755, -0.011730462, -5.981517)
+use_collision = true
+size = Vector3(12.93541, 0.001, 20.13379)
+material = SubResource("StandardMaterial3D_lwy2l")
+
+[node name="Interactables" type="Node3D" parent="." unique_id=1442826711]
+metadata/_scene_level_creator_generated = true
+
+[node name="Collectables" type="Node3D" parent="." unique_id=612687806]
+metadata/_scene_level_creator_generated = true
+
+[node name="Grabbables" type="Node3D" parent="." unique_id=626711824]
+metadata/_scene_level_creator_generated = true
+
+[node name="Rotatables" type="Node3D" parent="." unique_id=1901667922]
+metadata/_scene_level_creator_generated = true
+
+[node name="Player" parent="." unique_id=1025953232 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(-0.010646305, 0, -0.9999433, 0, 1, 0, 0.9999433, 0, -0.010646305, 2.87262, 0.17513156, -4.068395)
